@@ -1,0 +1,17 @@
+.postContainer {
+    margin: 1rem 0;
+}
+
+.title,
+.description,
+.date {
+    padding: 0.2rem 0;
+}
+
+.link {
+    display: block;
+    padding-top: 15px;
+    color: var(--primary-blue);
+    font-weight: 500;
+    cursor: pointer;
+}

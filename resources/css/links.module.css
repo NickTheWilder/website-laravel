@@ -1,0 +1,57 @@
+.link {
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    margin-right: 10px;
+    line-height: normal;
+}
+
+.blo::after,
+.g::after,
+.github::after,
+.s::after,
+.otif::after,
+.y::after,
+.linkedIn::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: -0.33px;
+    width: 102%;
+    height: 2px;
+}
+
+.blo::after {
+    width: 25px;
+    background-color: #ff6b6b;
+}
+
+.g::after {
+    width: 1px;
+    left: 37px;
+    background-color: #ff6b6b;
+}
+
+.github::after {
+    background-color: #71f27e;
+}
+
+.s::after {
+    width: 10px;
+    background-color: #f3ee77;
+}
+.otif::after {
+    left: 17px;
+    width: 30px;
+    background-color: #f3ee77;
+}
+.y::after {
+    left: 57px;
+    width: 3px;
+    background-color: #f3ee77;
+}
+
+.linkedIn::after {
+    background-color: var(--primary-blue);
+}

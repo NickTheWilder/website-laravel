@@ -1,0 +1,240 @@
+:root {
+    --primary-blue: #00a2d6;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none !important;
+    color: #fff;
+}
+
+/* https://www.joshwcomeau.com/css/custom-css-reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+#root,
+#__next {
+    isolation: isolate;
+}
+
+.mdx-content {
+    max-width: 65.75rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 1024px) {
+    .mdx-content {
+        margin: 0 1rem 4rem 1rem;
+    }
+}
+
+.mdx-content a {
+    color: var(--primary-blue);
+    font-style: italic;
+}
+
+.mdx-content article {
+    max-width: 1000px;
+}
+
+.mdx-content table {
+    width: 75%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: #252525;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.mdx-content th {
+    background-color: #2d2d2d;
+    color: var(--primary-blue);
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 2px solid #333;
+}
+
+.mdx-content td {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+    color: #fff;
+}
+
+.mdx-content h1 {
+    color: var(--primary-blue);
+    font-size: 36px;
+    font-weight: 600;
+    margin: 24px 0 16px 0;
+}
+
+.mdx-content h2 {
+    color: var(--primary-blue);
+    font-size: 28px;
+    font-weight: 600;
+    margin: 24px 0 16px 0;
+}
+
+.mdx-content strong {
+    font-weight: 600;
+}
+
+.mdx-content ul {
+    padding-left: 20px;
+}
+
+.mdx-content li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.mdx-content p {
+    line-height: 1.7;
+    margin: 16px 0;
+}
+
+.mdx-content blockquote {
+    border-left: 3px solid var(--primary-blue);
+    margin: 16px 0;
+    padding-left: 16px;
+    color: #a0a0a0;
+    font-style: italic;
+}
+
+.mdx-content code {
+    border-radius: 3px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+/* GitHub Dark Theme Syntax Highlighting */
+pre {
+    background-color: #0d1117 !important;
+    border-radius: 6px;
+    padding: 16px;
+    overflow: auto;
+    margin: 16px 0;
+}
+
+.starry-night {
+    color: #c9d1d9;
+    background: #0d1117;
+}
+
+.starry-night .comment,
+.starry-night .quote {
+    color: #8b949e;
+    font-style: italic;
+}
+
+.starry-night .keyword,
+.starry-night .selector-tag {
+    color: #ff7b72;
+}
+
+.starry-night .string,
+.starry-night .attr {
+    color: #a5d6ff;
+}
+
+.starry-night .number,
+.starry-night .literal {
+    color: #79c0ff;
+}
+
+.starry-night .variable,
+.starry-night .template-variable {
+    color: #ffa657;
+}
+
+.starry-night .function,
+.starry-night .title {
+    color: #d2a8ff;
+}
+
+.starry-night .tag,
+.starry-night .name {
+    color: #7ee787;
+}
+
+.starry-night .type,
+.starry-night .built_in {
+    color: #ff7b72;
+}
+
+.starry-night .symbol {
+    color: #79c0ff;
+}
+
+.starry-night .bullet {
+    color: #79c0ff;
+}
+
+.starry-night .section {
+    color: #1f6feb;
+    font-weight: bold;
+}
+
+.starry-night .emphasis {
+    font-style: italic;
+}
+
+.starry-night .strong {
+    font-weight: bold;
+}

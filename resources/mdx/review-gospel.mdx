@@ -1,0 +1,110 @@
+# Your Code Review Gospel
+
+Inspired from [a great talk](https://www.youtube.com/watch?v=zxHRYRxBNVE) it's time to get better at the PR review process. Below lists the problems we often face as a Reviewer and an Author of a PR and how we can address them.
+
+# The Reviewer
+
+## Focusing on the developer rather than the code
+
+Writing comments directed at the developer, not the code. The use of second-person pronouns at the beginning of the sentence is more likely to be impolite (Detecting interpersonal conflict in issues and code review).
+
+Words statistically more likely to be left in toxic comments; you, it is, if you want, people, even, do, what, want you, because.
+
+Words statistically more likely to be left in non-toxic comments; tests, could you, unit, vs, file, for, test, from, at, line, could you, pull request.
+
+## Skimming through reviews
+
+Reviewers often justify superficial reviews by thinking "if there's a bug, it's the developer's fault, not mine." This mindset ignores shared code ownership by the team and leads to preventable bugs reaching production. When critical issues are missed, the whole team pays the price in production incidents, not just the developer.
+
+## Writing ineffective comments
+
+Ineffective comments lead to debate, animosity, miscommunication, and ambiguity. If you read a comment you're about to submit and it is subjective, unclear, lacks an outcome, you should rethink how to reword your comment to better help the developer. Otherwise, you are leaving the developer the only choice to guess what the reviewer means by their comments.
+
+## How do we fix this?
+
+Forget your ego. The ownership of the code is the whole team, not just the developer. Focus on the code and not the developer. Non-toxic words focus on files, tests, pull requests, and not the developer.
+
+Code reviews should be reviewed in 25-45 minute bursts. This is the minimum and maximum time you should spend on a review. 25 minutes is enough to fully understand a small PR and after 45 minutes you should take a break and come back.
+
+Don't be afraid to send back PRs that are too large to review. If you continue to use the excuses given on why we shouldn't to send a large PR back, you will continue to get large PRs. If a bug is found in the PR, the reviewer should think "How did I miss that?".
+
+Effective comments are objective, as specific as possible, and have a focused outcome. Suggest with facts, before asking for a change, ask yourself why you want to make that change
+
+Use conventional comments (https://conventionalcomments.org) to structure your feedback.
+
+When submitting a comment, always highlight relevant code only, explicitly reference methods/variables/classes, include line numbers for context, and use markdown code blocks for code examples.
+
+When PR discussion is going nowhere, take it offline. After 3-4 comments nothing productive is happening. After having an offline discussion go back to the PR and add a new comment of the discussion.
+
+A good way to learn how to write objective, use the Triple-R pattern.
+
+### Triple-R pattern
+
+- **Request:** A sentence explaining what you'd like the author to do.
+- **Rationale:** A sentence of two explaining why the request is warranted. Include references or lines to justify your request.
+- **Results:** A measurable end state the author can compare their changes to.
+
+Example:
+
+- **Request:** "Can we change this variable name?"
+- **Rationale:** "The name `disabled` is not clear that this handles user permissions. Providing important context can help the next developer quickly learn what is going on."
+- **Results:** "What about `isSystemAdmin`? This clear states that the user must have system admin permissions to override records at this endpoint."
+
+To sum everything up:
+
+- Forget your ego.
+- Focus on the code, not the developer.
+- Proper, thorough reviews.
+- Write effective comments
+
+# The Author
+
+## Not being your own first reviewer
+
+Nothing is more embarrassing than submitting a PR only to find you made dumb mistakes.
+
+Before submitting a PR, check:
+
+- For obvious mistakes or oversights
+- That your code context matches your PR description
+- For typos in code and documentation
+- That all tests pass locally
+- That your changes meet the acceptance criteria
+
+Your job is not done once you've finished the final commit.
+
+## Not using any automation during development
+
+Linting, formatting, static analysis, automated testing. These are all things that can be automated during development and should be fixed. It's time to get over indentation and semicolons in code reviews. This allows the reviewer to focus on low level issues in your code, and not focusing on high level issues.
+
+## Making your PRs unmanageable
+
+Large, unfocused PRs are the number one reason reviewers don't complete thorough reviews. When a PR includes multiple features, touches too many files, or contains unrelated changes, reviewers struggle to understand the context and implications. This leads to superficial reviews or review fatigue.
+
+## Writing bad commit messages
+
+Poor documentation makes reviews a frustrating guessing game. Vague commit messages ("fixed stuff", "updates"), meaningless PR titles ("Changes"), and missing PR descriptions force reviewers to piece together intent from the code alone. This leads to confusion, longer review times, and missed issues as reviewers struggle to understand what changed and why.
+
+## Tying your worth to your code
+
+Taking code review feedback personally creates defensive reactions and toxic team dynamics. When developers tie their self-worth to their code, they resist feedback and miss opportunities for improvement.
+
+## How do we fix this?
+
+Start by being your own first reviewer. Before requesting others' time, thoroughly check your work. For ambiguous changes, provide clear justification and context up front.
+
+Let automation handle the basics. Configure your development environment to catch formatting, linting, and basic quality issues during development. This frees reviewers to focus on architecture and logic rather than style. If a linter cannot take care of formatting or code-style issues, make a living document where the team can establish rules and guidelines for all to follow.
+
+Keep your PRs focused and manageable. Limit changes to a single feature or fix that can be reviewed in 10-20 minutes. For larger features, break them into sequential PRs with clear dependencies. Consider starting with a design doc for significant changes.
+
+Document your changes clearly. Use conventional commit formats, write descriptive PR titles, and provide context in your descriptions. Clean up code and verify all tests before requesting review.
+
+Remember that code review is about improving the team's codebase, not judging individual worth. Approach feedback as an opportunity for the entire team to learn and improve.
+
+To sum everything up:
+
+- Review your own code first
+- Let automation handle the basics
+- Keep PRs small and focused
+- Document changes clearly
+- Take feedback as a learning opportunity

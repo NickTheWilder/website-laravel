@@ -1,0 +1,66 @@
+# Homelab Setup & Stack as of Feb 17th, 2025
+
+Having a server in house was always a dream of mine. The main purpose was to create a NAS to store family photos for the future to show the family. Using CasaOS (already baked into the Zimaboard) made creating a NAS fool proof, just boot up and voila, you've got a simple NAS.
+
+That was a little bit too easy, so I explored other ideas that I can create with this. Down the rabbit hole we go...
+
+## The Hardware Foundation
+
+Running on a [ZimaBlade 7700](https://shop.zimaspace.com/products/zimablade-single-board-server-for-cyber-native?variant=47722451730724), my homelab packs quite a punch in a compact form factor:
+
+- Intel Celeron N3450 (Apollo Lake) with 4 cores at 1.1GHz-2.2GHz
+- 16GB DDR3L RAM support
+- 32GB eMMC 5.1 storage
+- 2x SATA 6.0 Gb/s ports for expansion
+- PCIe 2.0 x4 slot for future expansion
+- Extended with a 500 Gb Samsung SSD
+
+## Software Stack
+
+### Base System
+
+- CasaOS (Debian-based) as the primary operating system, also serves as:
+  - Network Attached Storage (NAS)
+  - UI for container navigation
+  - Baked terminal for over the network server modifications
+- Portainer for Docker container management
+
+## Portainer
+
+CasaOS is already largely container based, so technically I could use the app store that is already provided. But Portainer just makes everything so much easier when managing containers.
+
+Running Portainer through CasaOS has become the backbone of my container management strategy. It provides a sleek web interface that makes managing Docker containers straightforward while still giving me the deep control I need. Through Portainer, I maintain my containers along with other homelab services.
+
+### Current Containers
+
+#### Pi-hole
+
+Using Pi-hole has helped me gain control over my home network's privacy and performance. It's configured to handle DNS queries for my fiber network. The system sits at 192.168.1.83 and manages a DHCP pool from 192.168.1.201-251, ensuring every device on my network automatically gets ad-blocking capabilities. I've set it up with dual-stack IPv4/IPv6 support, using both Quad9 and Cloudflare as upstream DNS providers for reliability.
+
+Beyond the default blocklists, I've added additional ones to enhance protection. While some ads still get through (YouTube and Twitch) because they are served on the server itself, it's been extremely effective at blocking most ads and trackers.
+
+Currently stats from Pi-Hole:
+
+| Total queries | Queries Blocked | Percentage Blocked | Domains on Adlists |
+| ------------- | --------------- | ------------------ | ------------------ |
+| 21,191        | 4,587           | 21.6%              | 633,928            |
+
+#### Home Assistant
+
+Home Assistant has become the main feature of my server now. Currently only utilizing my Google Nest Thermostat on there and a daily weather update in the mornings through AccuWeather.
+
+I was lucky enough to stumble upon [this YouTube video](https://www.youtube.com/watch?v=RwZmQ7QfhsM) to setup my thermostat. I don't think this would've been that smooth of a process without finding this.
+
+I am planning on eventually wiring PoE cameras throughout my house for security and to be out of the loop of hosting cameras over WiFi or over the web with some other company. The idea is to start incrementally with a basic PoE switch and Reolink camera infrastructure, with room to grow into more advanced networking features if needed.
+
+#### Uptime Kuma
+
+Uptime Kuma serves as my primary monitoring solution for all the services running on my ZimaBlade. Running as a Docker container managed through Portainer, it provides real-time status monitoring of my Pi-hole DNS service, CasaOS interface, and other critical network components.
+
+Currently tracking all containers mentioned above, this website's status, and my Nest's integration with Home Assistant since it has been flaky. Admittedly monitoring the containers is redundant, they are only likely to go down if the whole server is offline, but it was at least fun to set up.
+
+#### WireGaurd
+
+Without connecting to WiFi, I had no way to control my thermostat. Eventually this would also be a point of failure to track my cameras that will be setup as well if I am not home. WireGaurd to the rescue.
+
+Currently I've configured remote access to my homelab while keeping regular internet traffic separate through split tunneling. After configuring port forwarding on my AT&T router and deploying the WireGuard container, I can now securely access all my home services from anywhere without routing all my mobile traffic through my home network. WireGuard's strong encryption and key-based authentication ensure only authorized devices can connect, making it a robust yet simple solution for remote homelab access.

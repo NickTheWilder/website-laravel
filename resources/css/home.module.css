@@ -1,0 +1,41 @@
+.container {
+    margin: auto;
+    height: 500px;
+    max-width: 850px;
+    padding: 20px;
+    font-size: 23px;
+    font-weight: 300;
+}
+
+.hero {
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    padding-bottom: 20px;
+}
+
+.howdy {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.content {
+    padding-top: 15px;
+}
+
+.lang {
+    color: var(--primary-blue);
+}
+
+.links {
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.linkTitle {
+    padding-bottom: 5px;
+    font-weight: 700;
+}
