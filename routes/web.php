@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\BlogPost;
 use App\Models\Quote;
 
 Route::get('/', fn () => Inertia::render('home'))->name('home');
+
+Route::get('/form', fn () => Inertia::render('quoteForm'))->name('quoteForm');
+
+Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
 
 Route::get('/blog', fn () => Inertia::render('blog', [
     'blogPosts' => BlogPost::query()->orderBy('date', 'desc')->get(),
