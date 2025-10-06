@@ -14,6 +14,8 @@ Route::get('/form', fn () => Inertia::render('QuoteForm', [
 ]))->name('QuoteForm');
 
 Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
+Route::put('/quotes/{quote}', [QuoteController::class, 'update'])->name('quotes.update');
+Route::delete('/quotes/{quote}', [QuoteController::class, 'destroy'])->name('quotes.destroy');
 
 Route::get('/blog', fn () => Inertia::render('blog', [
     'blogPosts' => BlogPost::query()->orderBy('date', 'desc')->get(),
