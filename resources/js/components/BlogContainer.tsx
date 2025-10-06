@@ -1,6 +1,6 @@
 import { JSX, ReactNode } from 'react';
-import Header from './header';
 import '../../css/markdown-styles/github-dark.css';
+import Header from './Header';
 
 interface BlogProps {
     children: ReactNode;

@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import styles from '../../css/header.module.css';
-import Links from './links';
+import Links from './Links';
 
 export default function Header(): JSX.Element {
     return (

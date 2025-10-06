@@ -6,7 +6,7 @@ use Inertia\Inertia;
 use App\Models\BlogPost;
 use App\Models\Quote;
 
-Route::get('/', fn () => Inertia::render('home'))->name('home');
+Route::get('/', fn () => Inertia::render('Home'))->name('Home');
 
 Route::get('/form', fn () => Inertia::render('QuoteForm', [
     'quotes' => Quote::query()->orderBy('id', 'desc')->get(),
@@ -17,14 +17,14 @@ Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
 Route::put('/quotes/{quote}', [QuoteController::class, 'update'])->name('quotes.update');
 Route::delete('/quotes/{quote}', [QuoteController::class, 'destroy'])->name('quotes.destroy');
 
-Route::get('/blog', fn () => Inertia::render('blog', [
+Route::get('/blog', fn () => Inertia::render('Blog', [
     'blogPosts' => BlogPost::query()->orderBy('date', 'desc')->get(),
     'quotes' => Quote::all(),
   ]))->name('blog');
 
 Route::get('/blog/{slug}', function ($slug) {
     $post = BlogPost::query()->where('route', "/blog/{$slug}")->firstOrFail();
-    return Inertia::render('blogPost', [
+    return Inertia::render('BlogPost', [
         'post' => $post,
     ]);
 })->name('blog.post');

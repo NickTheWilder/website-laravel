@@ -1,4 +1,4 @@
-import Links from '@/components/links';
+import Links from '@/components/Links';
 import { JSX } from 'react';
 import styles from '../../css/home.module.css';
 

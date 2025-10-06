@@ -1,6 +1,6 @@
-import { BlogPreview } from '@/components/blogPreview';
-import Header from '@/components/header';
-import { TagsList } from '@/components/tagList';
+import { BlogPreview } from '@/components/BlogPreview';
+import Header from '@/components/Header';
+import { TagsList } from '@/components/TagList';
 import { BlogPost, Quote, Tags } from '@/lib/types';
 import { JSX, useEffect, useState } from 'react';
 import styles from '../../css/blog.module.css';
