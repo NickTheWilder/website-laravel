@@ -100,9 +100,9 @@ To combat flaky tests, Pact provides loose matchers, such as type based matchers
 
 ```js
 const EXPECTED_BODY = {
-  id: like(1),
-  username: like("marie"),
-  fullname: like("marie cruz"),
+    id: like(1),
+    username: like('marie'),
+    fullname: like('marie cruz'),
 };
 ```
 
@@ -119,38 +119,38 @@ A consumer contract test can be broken down into 5 steps
 5. Publish the contract to a broker.
 
 ```js
-const path = require("path");
-const { fetchMovies } = require("./consumer");
-const { PactV3, MatchersV3 } = require("@pact-foundation/pact");
+const path = require('path');
+const { fetchMovies } = require('./consumer');
+const { PactV3, MatchersV3 } = require('@pact-foundation/pact');
 
 const provider = new PactV3({
-  dir: path.resolve(process.cwd(), "pacts"),
-  consumer: "WebConsumer",
-  provider: "MoviesAPI",
+    dir: path.resolve(process.cwd(), 'pacts'),
+    consumer: 'WebConsumer',
+    provider: 'MoviesAPI',
 });
 
-const EXPECTED_BODY = { id: 1, name: "My movie", year: 1999 };
+const EXPECTED_BODY = { id: 1, name: 'My movie', year: 1999 };
 
-describe("Movies API", () => {
-  describe("When a GET request is made to /movies", () => {
-    test("it should return all movies", async () => {
-      provider
-        .uponReceiving("a request for all movies")
-        .withRequest({
-          method: "GET",
-          path: "/movies",
-        })
-        .willRespondWith({
-          status: 200,
-          body: MatchersV3.eachLike(EXPECTED_BODY),
+describe('Movies API', () => {
+    describe('When a GET request is made to /movies', () => {
+        test('it should return all movies', async () => {
+            provider
+                .uponReceiving('a request for all movies')
+                .withRequest({
+                    method: 'GET',
+                    path: '/movies',
+                })
+                .willRespondWith({
+                    status: 200,
+                    body: MatchersV3.eachLike(EXPECTED_BODY),
+                });
+
+            await provider.executeTest(async (mockProvider) => {
+                const movies = await fetchMovies(mockProvider.url);
+                expect(movies[0]).toEqual(EXPECTED_BODY);
+            });
         });
-
-      await provider.executeTest(async (mockProvider) => {
-        const movies = await fetchMovies(mockProvider.url);
-        expect(movies[0]).toEqual(EXPECTED_BODY);
-      });
     });
-  });
 });
 ```
 
@@ -195,28 +195,25 @@ const port = '3001';
 const app = server.listen(port, () => console.log(`Listening on port ${port}...`));
 
 const options = {
-  provider: 'MoviesAPI',
-  providerBaseUrl: `http://localhost:${port}`,
-  pactBrokerUrl: process.env.PACT_BROKER_BASE_URL,
-  pactBrokerToken: process.env.PACT_BROKER_TOKEN,
-  providerVersion: '1.0.0',
-  publishVerificationResult: true,
-  consumerVersionTags: ['main'],
+    provider: 'MoviesAPI',
+    providerBaseUrl: `http://localhost:${port}`,
+    pactBrokerUrl: process.env.PACT_BROKER_BASE_URL,
+    pactBrokerToken: process.env.PACT_BROKER_TOKEN,
+    providerVersion: '1.0.0',
+    publishVerificationResult: true,
+    consumerVersionTags: ['main'],
 };
 
 const verifier = new Verifier(options);
 
 describe('Pact Verification', () => {
-  test('should validate the expectations of movie-consumer', () => {
-    return verifier
-      .verifyProvider()
-      .then(
-        output => {
-          console.log('Pact Verification Complete!');
-          console.log('Result:', output);
-          app.close();
-      });
-  });
+    test('should validate the expectations of movie-consumer', () => {
+        return verifier.verifyProvider().then((output) => {
+            console.log('Pact Verification Complete!');
+            console.log('Result:', output);
+            app.close();
+        });
+    });
 });
 ```
 
@@ -238,5 +235,5 @@ Pact providers a lightweight wrapper `GraphQLInteraction` for GraphQL interactio
 - Marie Cruz' article on contract testing - https://www.testingwithmarie.com/post/using-pact-webhooks-to-improve-contract-testing
 - Lewis Prescott's podcast on contract testing - https://www.pactman.co.uk/contract-testing-podcast
 - Docs for Pact-Js: https://docs.pact.io/implementation_guides/javascript/readme
-  - GraphQL API: https://docs.pact.io/implementation_guides/javascript/docs/graphql
+    - GraphQL API: https://docs.pact.io/implementation_guides/javascript/docs/graphql
 - .NET Days 2024, Contract Testing Made Easy - https://www.youtube.com/watch?v=Hk-XxjIB8Vg
