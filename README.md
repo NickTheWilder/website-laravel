@@ -1,7 +1,7 @@
 # Website (but in Laravel)
 
-A re-write of my [personal website](https://github.com/NickTheWilder/website) but in Laravel.
-Another saga of rewriting a website in a new framework to get a feel for what's interesting to me.
+A rewrite of my [personal website](https://github.com/NickTheWilder/website) but in Laravel.
+Another saga of rewriting the website in a new framework to get a feel for what's interesting to me.
 
 ## Requirements
 
