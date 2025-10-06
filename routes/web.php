@@ -8,7 +8,10 @@ use App\Models\Quote;
 
 Route::get('/', fn () => Inertia::render('home'))->name('home');
 
-Route::get('/form', fn () => Inertia::render('quoteForm'))->name('quoteForm');
+Route::get('/form', fn () => Inertia::render('QuoteForm', [
+    'quotes' => Quote::query()->orderBy('id', 'desc')->get(),
+    'success' => session('success'),
+]))->name('QuoteForm');
 
 Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
 

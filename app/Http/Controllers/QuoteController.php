@@ -19,6 +19,6 @@ class QuoteController extends Controller
         $quote->author = $validatedData['author'];
         $quote->quote = $validatedData['quote'];
         $quote->save();
-        return redirect()->route('quoteForm')->with('success', 'Quote created successfully!');
+        return redirect()->route('QuoteForm')->with('success', 'Quote created successfully!');
     }
 }

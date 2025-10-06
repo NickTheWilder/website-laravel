@@ -1,6 +1,5 @@
 .container {
     width: 700px;
-    margin: 2rem auto;
     padding: 2rem;
     background-color: #252525;
     border-radius: 8px;
@@ -8,9 +7,8 @@
 }
 
 .title {
-    color: var(--primary-blue);
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 2rem;
 }
 

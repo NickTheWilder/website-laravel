@@ -16,6 +16,9 @@ export enum Tags {
 }
 
 export interface Quote {
+    id: number;
     quote: string;
     author: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
