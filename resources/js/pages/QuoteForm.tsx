@@ -2,6 +2,7 @@ import { EditQuoteForm } from '@/components/EditQuoteForm';
 import { Modal } from '@/components/Modal';
 import { Quote } from '@/lib/types';
 import styles from '@css/QuoteForm.module.css';
+import { router } from '@inertiajs/react';
 import { JSX, useState } from 'react';
 
 export default function QuoteForm({ quotes }: { quotes: Quote[] }): JSX.Element {
@@ -23,6 +24,10 @@ export default function QuoteForm({ quotes }: { quotes: Quote[] }): JSX.Element 
         setIsModalOpen(true);
     };
 
+    function handleLogout() {
+        router.post('/logout');
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -31,9 +36,15 @@ export default function QuoteForm({ quotes }: { quotes: Quote[] }): JSX.Element 
                     <span className={styles.outeMana}>uote Mana</span>
                     <span className={styles.gement}>gement</span>
                 </h1>
-                <button onClick={handleCreateNew} className={styles.createButton}>
-                    <span className={styles.createNew}>Create New</span>
-                </button>
+                <div className={styles.buttonGroup}>
+                    <button onClick={handleCreateNew} className={styles.createButton}>
+                        <span className={styles.createNew}>Create New</span>
+                    </button>
+                    <button onClick={handleLogout} className={styles.logoutButton}>
+                        <span className={styles.log}>Log</span>
+                        <span className={styles.out}>out</span>
+                    </button>
+                </div>
             </div>
             <table className={styles.table}>
                 <thead>
